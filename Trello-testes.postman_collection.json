@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "fa41e669-a102-4e01-b82b-75950135c183",
+		"name": "Trello-testes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autenticação token sucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2e9d9167-6656-4382-80e5-dc7fb565965e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/members/me/boards?key=564ea3684b7b5ed843cb672fea927370&token=e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"members",
+						"me",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "564ea3684b7b5ed843cb672fea927370"
+						},
+						{
+							"key": "token",
+							"value": "e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticação token erro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "efa42079-d702-44f2-b610-be202e0847de",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.trello.com/1/members/me/boards?key=1&token=e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"members",
+						"me",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "1"
+						},
+						{
+							"key": "token",
+							"value": "e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criação card sucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f69c959c-77ac-464c-8831-2f5a015f63e1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"5dafbca7555eaa32eed2ab29\",\r\n    \"badges\": {\r\n        \"attachmentsByType\": {\r\n            \"trello\": {\r\n                \"board\": 0,\r\n                \"card\": 0\r\n            }\r\n        },\r\n        \"location\": false,\r\n        \"votes\": 0,\r\n        \"viewingMemberVoted\": false,\r\n        \"subscribed\": false,\r\n        \"fogbugz\": \"\",\r\n        \"checkItems\": 0,\r\n        \"checkItemsChecked\": 0,\r\n        \"comments\": 0,\r\n        \"attachments\": 0,\r\n        \"description\": false,\r\n        \"due\": null,\r\n        \"dueComplete\": false\r\n    },\r\n    \"attachments\": [],\r\n    \"checkItemStates\": [],\r\n    \"closed\": false,\r\n    \"dueComplete\": false,\r\n    \"dateLastActivity\": \"2019-10-23T02:36:23.753Z\",\r\n    \"desc\": \"\",\r\n    \"descData\": {\r\n        \"emoji\": {}\r\n    },\r\n    \"due\": null,\r\n    \"dueReminder\": null,\r\n    \"email\": null,\r\n    \"idBoard\": \"5af4e5fb235866033fb07c76\",\r\n    \"idChecklists\": [],\r\n    \"stickers\": [],\r\n    \"idList\": \"5af4e5fb235866033fb07c77\",\r\n    \"idMembers\": [],\r\n    \"idMembersVoted\": [],\r\n    \"idShort\": 8,\r\n    \"idAttachmentCover\": null,\r\n    \"labels\": [],\r\n    \"idLabels\": [],\r\n    \"manualCoverAttachment\": false,\r\n    \"name\": \"teste post\",\r\n    \"pos\": 114688,\r\n    \"shortLink\": \"rOJS7EQd\",\r\n    \"shortUrl\": \"https://trello.com/c/rOJS7EQd\",\r\n    \"subscribed\": false,\r\n    \"url\": \"https://trello.com/c/rOJS7EQd/8--\",\r\n    \"cover\": {\r\n        \"idAttachment\": null,\r\n        \"color\": null,\r\n        \"idUploadedBackground\": null,\r\n        \"size\": \"normal\",\r\n        \"brightness\": \"light\"\r\n    },\r\n    \"isTemplate\": false,\r\n    \"limits\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.trello.com/1/cards?idList=5af4e5fb235866033fb07c77&keepFromSource=all&key=564ea3684b7b5ed843cb672fea927370&token=e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": "5af4e5fb235866033fb07c77"
+						},
+						{
+							"key": "keepFromSource",
+							"value": "all"
+						},
+						{
+							"key": "key",
+							"value": "564ea3684b7b5ed843cb672fea927370"
+						},
+						{
+							"key": "token",
+							"value": "e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criação card erro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4cc88412-e88b-427e-aac1-f73be3848e73",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"5dafbca7555eaa32eed2ab29\",\r\n    \"badges\": {\r\n        \"attachmentsByType\": {\r\n            \"trello\": {\r\n                \"board\": 0,\r\n                \"card\": 0\r\n            }\r\n        },\r\n        \"location\": false,\r\n        \"votes\": 0,\r\n        \"viewingMemberVoted\": false,\r\n        \"subscribed\": false,\r\n        \"fogbugz\": \"\",\r\n        \"checkItems\": 0,\r\n        \"checkItemsChecked\": 0,\r\n        \"comments\": 0,\r\n        \"attachments\": 0,\r\n        \"description\": false,\r\n        \"due\": null,\r\n        \"dueComplete\": false\r\n    },\r\n    \"attachments\": [],\r\n    \"checkItemStates\": [],\r\n    \"closed\": false,\r\n    \"dueComplete\": false,\r\n    \"dateLastActivity\": \"2019-10-23T02:36:23.753Z\",\r\n    \"desc\": \"\",\r\n    \"descData\": {\r\n        \"emoji\": {}\r\n    },\r\n    \"due\": null,\r\n    \"dueReminder\": null,\r\n    \"email\": null,\r\n    \"idBoard\": \"5af4e5fb235866033fb07c76\",\r\n    \"idChecklists\": [],\r\n    \"stickers\": [],\r\n    \"idList\": \"5af4e5fb235866033fb07c77\",\r\n    \"idMembers\": [],\r\n    \"idMembersVoted\": [],\r\n    \"idShort\": 8,\r\n    \"idAttachmentCover\": null,\r\n    \"labels\": [],\r\n    \"idLabels\": [],\r\n    \"manualCoverAttachment\": false,\r\n    \"name\": \"teste post1\",\r\n    \"pos\": 114688,\r\n    \"shortLink\": \"rOJS7EQd\",\r\n    \"shortUrl\": \"https://trello.com/c/rOJS7EQd\",\r\n    \"subscribed\": false,\r\n    \"url\": \"https://trello.com/c/rOJS7EQd/8--\",\r\n    \"cover\": {\r\n        \"idAttachment\": null,\r\n        \"color\": null,\r\n        \"idUploadedBackground\": null,\r\n        \"size\": \"normal\",\r\n        \"brightness\": \"light\"\r\n    },\r\n    \"isTemplate\": false,\r\n    \"limits\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.trello.com/1/cards?idList=&keepFromSource=all&key=564ea3684b7b5ed843cb672fea927370&token=e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": ""
+						},
+						{
+							"key": "keepFromSource",
+							"value": "all"
+						},
+						{
+							"key": "key",
+							"value": "564ea3684b7b5ed843cb672fea927370"
+						},
+						{
+							"key": "token",
+							"value": "e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizando card sucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "30c2fac7-3714-40c1-aa3d-23aa2b694e45",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/cards/5dafbfae722f4731384428ed/board?fields=all&key=564ea3684b7b5ed843cb672fea927370&token=e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"cards",
+						"5dafbfae722f4731384428ed",
+						"board"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "all"
+						},
+						{
+							"key": "key",
+							"value": "564ea3684b7b5ed843cb672fea927370"
+						},
+						{
+							"key": "token",
+							"value": "e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletando card sucesso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f11e5e58-304f-4a33-9c5c-8981307839e2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/cards/5dafbf7a9895b844403bb3f3?key=564ea3684b7b5ed843cb672fea927370&token=e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"cards",
+						"5dafbf7a9895b844403bb3f3"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "564ea3684b7b5ed843cb672fea927370"
+						},
+						{
+							"key": "token",
+							"value": "e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletando card erro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f11e5e58-304f-4a33-9c5c-8981307839e2",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/cards/5dafbf7a9895b844403bb3f3?key=564ea3684b7b5ed843cb672fea927370&token=e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"cards",
+						"5dafbf7a9895b844403bb3f3"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "564ea3684b7b5ed843cb672fea927370"
+						},
+						{
+							"key": "token",
+							"value": "e0898aa0e2f1550207a3a3738a56805cfd82f900cfc7408abbccb422879f3e27"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
